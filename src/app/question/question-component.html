@@ -1,0 +1,42 @@
+
+<GridLayout rows="100 , * ,300">
+    <GridLayout columns="*,*" row="0" >
+        <label col="0" text="Score : {{points}}" horizontalAlignment="center"></label>
+        <label col="1" text="Vies : {{lifes}}" horizontalAlignment="center"></label>
+    </GridLayout>
+
+    <Label verticalAlignment="center"
+           horizontalAlignment="center"
+           text="{{questionText}}"
+           textWrap=true
+           row="1"
+           *ngIf="trueImage == 0"></Label>
+
+    <Label verticalAlignment="center"
+           horizontalAlignment="center"
+           text="{{questionText}}"
+           textWrap=true
+           row="1"
+           style="border-color:limegreen;
+                    border-radius: 5;
+                    border-width: 2;"
+           *ngIf="trueImage == 1"></Label>
+
+    <Label verticalAlignment="center"
+           horizontalAlignment="center"
+           text="{{questionText}}"
+           textWrap=true
+           row="1"
+           style="border-color:red;
+                    border-radius: 5;
+                    border-width: 2;"
+           *ngIf="trueImage == 2"></Label>
+    <GridLayout columns="*,*,*,*" row="2" rows="*,100">
+        <Button row="1" col="0" text="VRAI" class="btn btn-primary" (tap)="checkAnswer(true)" *ngIf="answersButtons"></Button>
+        <Button row="1" col="1" text="?" class="btn btn-purple" (tap)="giveAnswer()" *ngIf="jokers >=1"></Button>
+        <Button row="1" col="2" text="?" class="btn btn-purple" (tap)="giveAnswer()" *ngIf="jokers == 2"></Button>
+        <Button row="1" col="0" colspan="4" text="Fin du jeu !" class="btn btn-primary" [nsRouterLink]="['/endGame']" *ngIf="stopGame"></Button>
+        <Button row="1" col="0" colspan="4" text="QUESTION SUIVANTE" class="btn btn-primary" (tap)="refresh()" *ngIf="nextButton && !stopGame"></Button>
+        <Button row="1" col="3" text="FAUX" class="btn btn-primary" (tap)="checkAnswer(false)" *ngIf="answersButtons"></Button>
+    </GridLayout>
+</GridLayout>

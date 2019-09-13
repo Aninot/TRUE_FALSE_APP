@@ -1,0 +1,18 @@
+<GridLayout rows="*,*,*,*,*" class="page">
+    <Label verticalAlignment="center"
+           horizontalAlignment="center"
+           text="Thème"
+           textWrap=true
+           row="0"
+            style="font-size: 50px;"></Label>
+    <ListPicker row="1" [items]="themes" [selectedIndex]="theme" (selectedIndexChange)="changeTheme($event)" class="p-15"></ListPicker>
+    <Label verticalAlignment="center"
+           horizontalAlignment="center"
+           text="Difficulté"
+           textWrap=true
+           row="2"
+           style="font-size: 50px;"></Label>
+    <ListPicker row="3" [items]="levels" [selectedIndex]="level" (selectedIndexChange)="changeLevel($event)" class="p-15"></ListPicker>
+    <Button row="4" text="Menu principal" class="btn btn-purple btn-rounded-lg" [nsRouterLink]="['/items']"></Button>
+</GridLayout>
+
